@@ -113,51 +113,30 @@ class Cook:
         """Сменить вид пасты, которую нужно приготовить"""
         self.pasta = pasta
 
-    def make_italian_pasta_carbonara(self):
-        """Приготовить Карбонару по рецепту"""
-        print("Паста: Карбонара")
+    def make_pasta(self, pasta_name):
+        """Универсальный метод для любой пасты"""
+        print(f"Паста: {pasta_name}")
         self.pasta.type_pasta()
         self.pasta.add_sauce()
         self.pasta.add_filling()
         self.pasta.add_topping()
         return self.pasta.get_pasta()
-
-    def make_italian_pasta_bolognese(self):
-        """Приготовить Болоньезе по рецепту"""
-        print("Паста: Болоньезе")
-        self.pasta.type_pasta()
-        self.pasta.add_sauce()
-        self.pasta.add_filling()
-        self.pasta.add_topping()
-        return self.pasta.get_pasta()
-
-    def make_italian_pasta_pesto(self):
-        """Приготовить Песто по рецепту"""
-        print("Паста: Песто")
-        self.pasta.type_pasta()
-        self.pasta.add_sauce()
-        self.pasta.add_filling()
-        self.pasta.add_topping()
-        return self.pasta.get_pasta()
+    """
+    Тот же нюанс, что и в первом задании.
+    Но поскольку у тебя ошибка повторная тут уже не снижаю.
+    """
 
 if __name__ == '__main__':
     cook = Cook()
-    # Готовим Карбонару
-    carbonara = CarbonaraBuilder()
-    cook.set_pasta(carbonara)
-    print(cook.make_italian_pasta_carbonara())
-    print()
 
-    # Готовим Болоньезе
-    bolognese = BologneseBuilder()
-    cook.set_pasta(bolognese)
-    print(cook.make_italian_pasta_bolognese())
-    print()
+    cook.set_pasta(CarbonaraBuilder())
+    print(cook.make_pasta("Карбонара"))
 
-    # Готовим Песто
-    pesto = PestoBuilder()
-    cook.set_pasta(pesto)
-    print(cook.make_italian_pasta_pesto())
+    cook.set_pasta(BologneseBuilder())
+    print(cook.make_pasta("Болоньезе"))
+
+    cook.set_pasta(PestoBuilder())
+    print(cook.make_pasta("Песто"))
 
 # Паста — это сложный продукт, состоящий из нескольких частей:
 # тип пасты, соус, начинка, добавки.

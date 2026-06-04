@@ -55,7 +55,14 @@ class Painter(Builder):
 class Foreman:
     """Директор (Прораб). Управляет строителями и знает последовательность работ."""
     def __init__(self):
-        self.builder = None  # текущий строитель
+        self.builder = None
+        # текущий строитель
+    def do_work(self, job_name):
+        """Универсальный метод для любой работы"""
+        print(job_name)
+        self.builder.produce_part_a()
+        self.builder.produce_part_b()
+        return self.builder.product.parts
 
     def set_builder(self, builder):
         """Сменить строителя"""
@@ -81,6 +88,13 @@ class Foreman:
         self.builder.produce_part_a()
         self.builder.produce_part_b()
         return self.builder.product.parts
+    """
+    Да по строителям все отлично. 
+    Части a и b тут вопросов нет.
+    Также понимаю логику у прораба, ты хотел конкретизировать работы.
+    Но суть в том, что прораб принимает конкретного строителя и можно обойтись 1
+    методом например do_work()
+    """
 
     @staticmethod
     def make_full_renovation():
@@ -98,22 +112,17 @@ if __name__ == '__main__':
 
     # Делаем только полы
     tiler = Tiler()
-    foreman.set_builder(tiler)
-    print(foreman.make_floor())
-    print()
+    foreman.set_builder(Tiler())
+    print(foreman.do_work("Делаем полы:"))
 
-    # Делаем только выравнивание стен
-    finisher = Finisher()
-    foreman.set_builder(finisher)
-    print(foreman.make_walls_level())
-    print()
+    foreman.set_builder(Finisher())
+    print(foreman.do_work("Ровняем стены:"))
 
-    # Делаем только покраску стен
-    painter = Painter()
-    foreman.set_builder(painter)
-    print(foreman.make_paint_walls())
-
-    print()
+    foreman.set_builder(Painter())
+    print(foreman.do_work("Красим стены:"))
 
     # Делаем все работы под ключ
     print(foreman.make_full_renovation())
+
+
+
