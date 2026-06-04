@@ -56,6 +56,11 @@ class Foreman:
     """Директор (Прораб). Управляет строителями и знает последовательность работ."""
     def __init__(self):
         self.builder = None
+
+    def set_builder(self, builder):
+        """Сменить работника"""
+        self.builder = builder
+
         # текущий строитель
     def do_work(self, job_name):
         """Универсальный метод для любой работы"""
