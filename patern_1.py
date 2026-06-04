@@ -64,24 +64,6 @@ class Foreman:
         self.builder.produce_part_b()
         return self.builder.product.parts
 
-    def set_builder(self, builder):
-        """Сменить строителя"""
-        self.builder = builder
-
-    def make_floor(self):
-        """Сделать полы (работа плиточника)"""
-        print('Делаем полы:')
-        self.builder.produce_part_a()
-        self.builder.produce_part_b()
-        return self.builder.product.parts
-
-    def make_walls_level(self):
-        """Выровнять стены (работа отделочника)"""
-        print('Ровняем стены:')
-        self.builder.produce_part_a()
-        self.builder.produce_part_b()
-        return self.builder.product.parts
-
     def make_paint_walls(self):
         """Покрасить стены (работа маляра)"""
         print('Красим стены:')
